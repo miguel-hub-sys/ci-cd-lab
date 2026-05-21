@@ -1,0 +1,26 @@
+name: DevOps CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show Current Files
+        run: ls -lah
+
+      - name: Show Current Directory
+        run: pwd
+
+      - name: Test Pipeline
+        run: echo "CI/CD Pipeline Success"
