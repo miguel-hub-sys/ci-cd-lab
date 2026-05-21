@@ -25,5 +25,3 @@ jobs:
       - name: Test Pipeline
         run: echo "CI/CD Pipeline Success"
 
-      - name: failtest
-        run: gagal123
