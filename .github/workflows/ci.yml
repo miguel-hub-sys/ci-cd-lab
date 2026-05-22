@@ -1,4 +1,4 @@
-name: DevOps CI Pipeline
+name: Docker CI Pipeline
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  build:
+  docker-build:
 
     runs-on: ubuntu-latest
 
@@ -16,12 +16,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Show Current Files
-        run: ls -lah
+      - name: Build Docker Image
+        run: docker build -t devops-web .
 
-      - name: Show Current Directory
-        run: pwd
-
-      - name: Test Pipeline
-        run: echo "CI/CD Pipeline Success"
-
+      - name: Show Docker Images
+        run: docker images
