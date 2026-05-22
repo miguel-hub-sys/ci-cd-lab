@@ -21,3 +21,11 @@ jobs:
 
       - name: Show Docker Images
         run: docker images
+
+      - name: Deployment Simulation
+        run: |
+          echo "Deploy Started"
+          echo "Stopping old container"
+          echo "Building new image"
+          echo "Starting new container"
+          echo "Deployment Finished"
