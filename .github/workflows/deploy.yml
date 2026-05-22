@@ -23,7 +23,7 @@ jobs:
           username: miguel
           key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-          script:
+          script: 
             cd ~/ci-cd-lab
 
             git pull origin main
