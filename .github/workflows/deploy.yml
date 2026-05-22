@@ -1,4 +1,4 @@
-nama: Auto Deploy Docker App
+name: Auto Deploy Docker App
 
 on:
   push:
