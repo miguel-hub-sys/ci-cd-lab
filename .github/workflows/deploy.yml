@@ -15,25 +15,31 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Connect Tailscale
+        uses: tailscale/github-action@v2
+
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
 
         with:
-          host: 172.16.130.142
+          host: 100.87.75.117
           username: miguel
           key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-          script: 
+          script: |
             cd ~/ci-cd-lab
 
             git pull origin main
 
-            sudo docker stop devops-web || true
-            sudo docker rm devops-web || true
+            docker stop devops-web || true
+            docker rm devops-web || true
 
-            sudo docker build -t devops-web .
+            docker build -t devops-web .
 
-            sudo docker run -d \
+            docker run -d \
               --name devops-web \
               -p 8090:80 \
               devops-web
